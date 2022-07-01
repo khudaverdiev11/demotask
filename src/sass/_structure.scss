@@ -1,0 +1,22 @@
+.datatables {
+    width: 100%;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+    div{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        h6{
+            margin: 0;
+        }
+        p{
+            margin: 0 5px;
+        }
+        .userid{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+}
