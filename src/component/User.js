@@ -11,6 +11,7 @@ const User = (props) => {
     const [userPerPage, setuserPerPage] = useState(2);
     const [buttonPopup, setButtonPopup] = useState(false)
     const [userPosts, setUserPosts] = useState(null);
+    const [title, setTitle] = useState('User Posts');
     useEffect(() => {
         const fetchUsers = async () => {
             setLoading(true);
@@ -30,12 +31,10 @@ const User = (props) => {
     }
 
     const handleClick = (e) => {
-        console.log(e.currentTarget.id);
         fetch(`https://jsonplaceholder.typicode.com/posts?userId=${e.currentTarget.id}`)
             .then(response => response.json())
             .then(data => setUserPosts(data));
-       
-        console.log(userPosts)
+        setTitle('User Posts')
     };
     return (
         <div className='container-fluid mt-5'>
@@ -56,8 +55,8 @@ const User = (props) => {
                 }
             </div>
             <Pagination postPerPage={userPerPage} totalPosts={users.length} paginate={paginate} />
-            {/* userPosts&&<Popup posts={userPosts}/> */}
-        </div>   
+            <Popup posts={userPosts} setUserPosts={setUserPosts} title={title} setTitle={setTitle} />
+        </div>
     )
 }
 
